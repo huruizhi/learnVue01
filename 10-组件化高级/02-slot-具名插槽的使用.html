@@ -8,22 +8,20 @@
 <body>
 
 <div id="app">
-    <cpn></cpn>
-    <cpn><h1>插槽的替换</h1></cpn>
     <cpn>
-        <div>
-            <p>哈哈哈</p>
-            <p>嘿嘿嘿</p>
-        </div>
+        <span slot="left">替换左边的插槽</span>
+        <span slot="middle">替换中间的插槽</span>
+        <span slot="right">替换右边的插槽</span>
     </cpn>
-    <cpn><p>另一个插件</p></cpn>
 </div>
 
 </body>
 <template id="cpn">
     <div>
         <p>这是一个插槽</p>
-        <slot><button>这是插槽的默认选项按钮</button></slot>
+        <slot name="left">左边</slot>
+        <slot name="middle">中间</slot>
+        <slot name="right">右边</slot>
     </div>
 </template>
 <script src="../js/vue.js"></script>

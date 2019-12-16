@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn>
+        <div slot-scope="slot">
+            <span v-for="item in slot.data">{{item}} - </span>
+        </div>
+    </cpn>
+
+    <cpn>
+        <div slot-scope="slot">
+            <span>{{slot.data.join(' * ')}}</span>
+        </div>
+    </cpn>
+</div>
+
+</body>
+<template id="cpn">
+    <div>
+<!--        传递模板变量到外部 -->
+        <slot :data="itemList" >
+            <ul>
+                <li v-for="item in itemList">{{item}}</li>
+            </ul>
+        </slot>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+        },
+        components: {
+            cpn: {
+                template: "#cpn",
+                data() {
+                    return {
+                        itemList: ['python','Java','C++','php','JavaScript']
+                    }
+                }
+            },
+        }
+    })
+</script>
+
+</html>
