@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div id="counter">
+    <h2>{{message}}</h2>
+    <h2>{{firstName}} {{lastName}}</h2>
+    <h2>{{firstName + ' ' + lastName}}</h2>
+    <h2>{{counter * 2 }}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    // 双大括号 的语法叫 mastache 语法
+</script>
+<script>
+    // 简写 @click
+    const app = new Vue({
+        el: "#counter",
+        data: {
+            message: '你好',
+            firstName: 'kobe',
+            lastName: 'bryant',
+            counter: 100
+        },
+        methods: {
+        },
+        //生命周期函数
+        created: function () {
+            console.log('create')
+        },
+        mounted: function () {
+            console.log('mounted')
+        }
+    })
+</script>
+</body>
+
+</html>

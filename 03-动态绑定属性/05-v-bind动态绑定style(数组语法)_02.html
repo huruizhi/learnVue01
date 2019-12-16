@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div id="app">
+    <h2 :style="{fontSize: '50px'}">{{message}}</h2>
+    <h2 :style="[baseStyle, fontsize]">{{message}}</h2>
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+<!-- v-bind 绑定 变量到属性 -->
+
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            baseStyle: {background: 'red'},
+            fontSize: {fontSize: '20px'},
+            message: '你好!',
+        },
+    })
+</script>
+
+</html>

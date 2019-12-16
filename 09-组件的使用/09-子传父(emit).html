@@ -1,0 +1,70 @@
+<!--父子组件的通信方式-->
+<!--1. props -> properties 属性传递  父组件 -> 子组件-->
+<!--2. $emit event 自定义事件 子组件 -> 父组件 --->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div id="app">
+<!--    调用子组件  -->
+    <cpn :btn="btnList" @item-click="fItemClick" ></cpn>
+</div>
+
+</body>
+
+<template id="cpn1">
+    <div>
+        <button v-for="item in btn" @click="btnClick(item)">{{item.name}}</button>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+
+<script>
+    const cpn = {
+        template: "#cpn1",
+        props: {
+            btn: {
+                type: Array,
+            },
+        },
+        methods:{
+          btnClick(item) {
+              this.$emit('item-click', item)
+          }
+        },
+        data () {
+            return{}
+        }
+    };
+
+    const app1 = new Vue({
+        el: "#app",
+        data: {
+            btnList: [
+                {id: 1, name: '热门推荐'},
+                {id: 2, name: '手机数码'},
+                {id: 3, name: '家用家电'},
+                {id: 4, name: '电脑办公'},]
+        },
+        components:{
+            cpn
+        },
+        methods: {
+            fItemClick(item) {
+                console.log('father');
+                console.log(item.id,item.name)
+            }
+        },
+        computed: {},
+        filters: {}
+    })
+</script>
+
+</html>

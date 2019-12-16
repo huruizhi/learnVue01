@@ -1,0 +1,88 @@
+<!--父子组件的通信方式-->
+<!--1. props -> properties 属性传递  父组件 -> 子组件-->
+<!--2. $emit event 自定义事件 子组件 -> 父组件 --->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div id="app">
+<!--    调用子组件  -->
+    <cpn :number1="number1"
+         :number2="number2"
+         @num1change="num1change"
+         @num2change="num2change"/>
+</div>
+
+</body>
+
+<template id="cpn1">
+    <div>
+        <p>data: {{dnumber1}}</p>
+        <p>prop: {{number1}}</p>
+        <input type="text" v-model="dnumber1">
+
+        <p>data: {{dnumber2}}</p>
+        <p>prop: {{number2}}</p>
+        <input type="text" v-model="dnumber2">
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+
+<script>
+    const cpn = {
+        template: "#cpn1",
+        props: {
+            number1: {type: Number, default: 0},
+            number2: {type: Number, default: 0},
+        },
+        data(){
+            return {
+                dnumber1: this.number1,
+                dnumber2: this.number2
+            }
+        },
+        // 一种特殊的函数 函数名与data中的变量名相同，使用emit 传递值给父组件
+        watch:{
+            dnumber1(newValue) {
+                newValue = parseInt(newValue);
+                this.dnumber2 = newValue * 100;
+                this.$emit('num1change', parseInt(newValue));
+            },
+            dnumber2(newValue) {
+                newValue = parseInt(newValue);
+                this.dnumber1 = newValue / 100;
+                this.$emit('num2change', newValue);
+            }
+        }
+    };
+
+    const app1 = new Vue({
+        el: "#app",
+        data: {
+            number1: 1,
+            number2: 100
+        },
+        components:{
+            cpn
+        },
+        methods: {
+            num1change(number) {
+                this.number1 = number
+            },
+            num2change(number) {
+                this.number2 = number
+            }
+        },
+        computed: {},
+        filters: {}
+    })
+</script>
+
+</html>

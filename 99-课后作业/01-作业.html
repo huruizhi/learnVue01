@@ -1,0 +1,42 @@
+<!--
+作业：
+1. 打印电影列表
+2. 默认情况下列表第一行红色 其他黑色
+3. 点击黑色的行，该行变成红色
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(item, i) in movies" :class="{active: i === currentIndex }" @click="active(i)">{{item}}</li>
+
+            </ul>
+            </div>
+
+            </body>
+            <script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            movies: ['海贼王', '进击的巨人', '火影忍者', '犬夜叉'],
+            currentIndex: 0
+        },
+        methods:{
+            active: function (i) {
+                this.currentIndex = i
+            }
+        }
+    })
+</script>
+</html>

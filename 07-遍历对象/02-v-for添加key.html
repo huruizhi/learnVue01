@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div id="app">
+    <ul>
+<!--提高效率在插入元素操作的时候-->
+        <li v-for="item in items" :key="item">{{item}}</li>
+    </ul>
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            items: ['a','b','c','d','e']
+        }
+    })
+</script>
+
+</html>

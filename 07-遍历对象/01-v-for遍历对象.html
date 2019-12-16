@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(item, i) in list">{{i}}  {{item}}</li>
+    </ul>
+
+    <ul>
+        <li v-for="(item, key, index) in dict">{{key}}  {{item}}  {{index}}</li>
+    </ul>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            list: ['1','a','b','c'],
+            dict: {
+                'name': 'hu',
+                'age': 18,
+                'high': 180
+            }
+
+        }
+    })
+</script>
+</html>

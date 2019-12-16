@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div id="app">
+    <ul>
+<!--提高效率在插入元素操作的时候-->
+        <li v-for="item in items" :key="item">{{item}}</li>
+    </ul>
+            <button @click="btnClick()">操作</button>
+            </div>
+
+            </body>
+            <script src="../js/vue.js"></script>
+
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            items: ['a','b','c','d','e','a','b','c','d','e'],
+        },
+        methods: {
+            btnClick() {
+            //    响应式
+            //     this.items.push('123','aaaa');
+            //     this.items.pop();
+            //     this.items.unshift('123','456');
+            //     this.items.shift();
+
+            //    splice
+            //    删除
+                this.items.splice(1,2);
+            //    替换
+                this.items.splice(1,2, 'aa', 'aa', 'aa');
+                //    添加
+                this.items.splice(2,0, 'bb', 'bb', 'bb')
+            },
+        }
+    })
+</script>
+
+</html>

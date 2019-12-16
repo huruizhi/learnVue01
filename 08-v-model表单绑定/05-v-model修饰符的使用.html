@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div id="app">
+<!--    lazy 懒加载 -->
+    <label>
+        <input type="text" v-model.lazy="message">{{message}}
+    </label>
+    <br>
+    ----------
+    <br>
+    <!--   number 将v-model绑定的变量类型变成数字类型 -->
+    <label>
+        <input type="number" v-model.number="age">
+        {{age}}  {{typeof age}}
+    </label>
+    <br>
+    ----------
+    <br>
+    <!--   trim  去掉两端空格-->
+    <label>
+        <input type="text" v-model.trim="message1">
+        {{message1}}
+    </label>
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "hello",
+            message1: " hello ! ",
+            age: 0
+        },
+        methods: {},
+        computed: {},
+        filters: {}
+    })
+</script>
+
+</html>

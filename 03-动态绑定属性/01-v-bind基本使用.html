@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="app">
+    <img v-bind:src="img_url" alt="" >
+    <a v-bind:href="href_url">baidu</a>
+
+    <!-- v-bind 语法糖 -->
+    <a :href="href_url">baidu语法糖</a>
+
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+<!-- v-bind 绑定 变量到属性 -->
+
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            href_url: "http://www.baidu.com",
+            img_url: "https://img13.360buyimg.com/babel/s590x470_jfs/t1/74245/27/16447/102108/5dde61c4E00d5e7a0/9ca5935c69915529.jpg.webp",
+        }
+    })
+</script>
+
+</html>
